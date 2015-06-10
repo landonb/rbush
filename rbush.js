@@ -608,10 +608,14 @@ function swap(arr, i, j) {
 }
 
 
-// export as AMD/CommonJS module or global variable
-if (typeof define === 'function' && define.amd) define('rbush', function() { return rbush; });
-else if (typeof module !== 'undefined') module.exports = rbush;
+// Export for:
+// - goog.require module
+if (typeof module !== 'undefined') module.exports = rbush;
+// - AMD/CommonJS module
+else if (typeof define === 'function' && define.amd) define('rbush', function() { return rbush; });
+// - EXPLAIN: used by?
 else if (typeof self !== 'undefined') self.rbush = rbush;
+// - use as global variable
 else window.rbush = rbush;
 
 })();
